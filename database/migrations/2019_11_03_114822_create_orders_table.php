@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('name',191)->nullable();
+            $table->string('address',191)->nullable();
+            $table->string('city',191)->nullable();
+            $table->string('phone',191)->nullable();
             $table->text('comment')->nullable();
-            $table->string('status')->default(\App\Models\Order::STATUS_APPROVED);
+            $table->string('status', 191)->default(\App\Models\Order::STATUS_APPROVED);
             $table->timestamp('date_delivery');
             $table->float('total_sum');
 

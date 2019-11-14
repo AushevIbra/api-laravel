@@ -17,8 +17,8 @@ class CreateOrderFoodsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('food_id');
-            $table->string('unit');
-            $table->string('comment')->nullable();
+            $table->string('unit', 191);
+            $table->string('comment', 191)->nullable();
             $table->integer('count');
             $table->softDeletes();
             $table->timestamps();

@@ -96,7 +96,7 @@ SQL;
      */
     public function show($id)
     {
-        $client = Client::findOrFail($id);
+        $client = Client::with(Client::WITH_ORDERS)->findOrFail($id);
 
         return response()->json(['client' => $client]);
     }

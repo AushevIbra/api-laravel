@@ -24,6 +24,8 @@ class Client extends Model
 
     const TABLE_NAME = 'clients';
 
+    const WITH_ORDERS = 'orders';
+
     protected $fillable = [
         self::ATTR_NAME,
         self::ATTR_LINK,
@@ -31,4 +33,9 @@ class Client extends Model
         self::ATTR_CITY,
         self::ATTR_ADDRESS
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

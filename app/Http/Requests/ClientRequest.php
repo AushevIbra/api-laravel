@@ -32,7 +32,7 @@ class ClientRequest extends FormRequest
     public function messages()
     {
         return [
-            Client::ATTR_NAME . '.required' => 'Заполните имя клиента'
+            Client::ATTR_NAME . '.required' => 'Введите имя клиента'
         ];
     }
 }

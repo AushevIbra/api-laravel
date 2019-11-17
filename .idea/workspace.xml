@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b0b4e8e-0dae-4400-947a-2ca947ff3c2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/FoodRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/FoodRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ClientRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ClientRequest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,15 +15,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2019_11_03_114631_create_clients_table.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -87,13 +78,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/FoodRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="35" column="78" lean-forward="true" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+            <state relative-caret-position="280">
+              <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
               <folding>
                 <element signature="e#37#57#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/ClientRequest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+              <folding>
+                <element signature="e#37#59#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,7 +141,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/ClientRequest.php" />
         <option value="$PROJECT_DIR$/app/Services/FoodService.php" />
         <option value="$PROJECT_DIR$/tests/Feature/ClientTest.php" />
         <option value="$PROJECT_DIR$/tests/Feature/FoodTest.php" />
@@ -172,6 +174,7 @@
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/FoodRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/ClientRequest.php" />
       </list>
     </option>
   </component>
@@ -322,27 +325,6 @@
               <item name="vanilla" type="b2602c69:ProjectViewProjectNode" />
               <item name="vanilla" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vanilla" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vanilla" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vanilla" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vanilla" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-              <item name="Order" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vanilla" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vanilla" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -479,7 +461,7 @@
       <workItem from="1573790315957" duration="862000" />
       <workItem from="1573901449195" duration="613000" />
       <workItem from="1573926560907" duration="1130000" />
-      <workItem from="1573969385079" duration="4483000" />
+      <workItem from="1573969385079" duration="4562000" />
     </task>
     <servers />
   </component>
@@ -516,7 +498,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66782000" />
+    <option name="totallyTimeSpent" value="66861000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -536,12 +518,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49946696" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946696" visible="true" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.304371" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.304371" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,16 +658,6 @@
           <caret line="28" column="37" selection-start-line="21" selection-start-column="8" selection-end-line="28" selection-end-column="37" />
           <folding>
             <element signature="e#33#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/ClientRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#37#59#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -857,10 +829,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/FoodRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="35" column="78" lean-forward="true" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+        <state relative-caret-position="280">
+          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
           <folding>
             <element signature="e#37#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/ClientRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+          <folding>
+            <element signature="e#37#59#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

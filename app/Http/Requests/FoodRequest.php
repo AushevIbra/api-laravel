@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class FoodRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,6 +27,14 @@ class FoodRequest extends FormRequest
         return [
             Food::ATTR_NAME  => 'required',
             Food::ATTR_PRICE => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            implode('.', [Food::ATTR_NAME, 'required'])  => "Заполните название",
+            implode('.', [Food::ATTR_PRICE, 'required']) => "Укажите цену",
         ];
     }
 }

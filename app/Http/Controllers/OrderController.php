@@ -28,8 +28,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filter = [
+            $request->get('date_from', date("Y-m-d")),
+            $request->get('date_to', date("Y-m-d", strtotime("2040-11-23")))
+        ];
+
         $sql    = <<<SQL
     DATE_FORMAT(orders.date_delivery, '%d.%m.%Y') as "key", CONCAT(
 
@@ -48,6 +53,12 @@ SQL;
         $orders = DB::table('orders')
             ->selectRaw($sql)
             ->groupBy(DB::raw("DATE_FORMAT(orders.date_delivery, '%d.%m.%Y')"))
+            ->when($filter, function ($query) use ($filter) {
+                return $query->whereBetween(Order::ATTR_DATE_DELIVERY, $filter);
+            })
+            ->when($request->get('name'), function ($query) use ($request) {
+                return $query->where(Order::ATTR_NAME, "LIKE", "%" . $request->get('name') . "%");
+            })
             ->get()
             ->map(function ($order) {
                 return new OrderViewModel($order);

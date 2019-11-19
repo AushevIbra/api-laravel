@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property integer $name
  * @property string $address
+ * @property string $city
  * @property string $phone
  * @property string $comment
  * @property integer $status
@@ -22,6 +23,7 @@ class Order extends Model
     const ATTR_ID            = 'id';
     const ATTR_NAME          = 'name';
     const ATTR_ADDRESS       = 'address';
+    const ATTR_CITY          = 'city';
     const ATTR_PHONE         = 'phone';
     const ATTR_COMMENT       = 'comment';
     const ATTR_STATUS        = 'status';
@@ -50,6 +52,8 @@ class Order extends Model
 
     public function foods()
     {
-        return $this->belongsToMany(Food::class, 'order_foods')->withPivot([OrderFoods::ATTR_UNIT, OrderFoods::ATTR_COUNT, OrderFoods::ATTR_COMMENT]);
+        return $this->belongsToMany(Food::class, 'order_foods')->withPivot([OrderFoods::ATTR_UNIT,
+                                                                            OrderFoods::ATTR_COUNT,
+                                                                            OrderFoods::ATTR_COMMENT]);
     }
 }

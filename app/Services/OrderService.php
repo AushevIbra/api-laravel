@@ -15,6 +15,7 @@ class OrderService
         $data = $request->all([
             Order::ATTR_NAME,
             Order::ATTR_ADDRESS,
+            Order::ATTR_CITY,
             Order::ATTR_PHONE,
             Order::ATTR_DATE_DELIVERY,
             Order::ATTR_COMMENT,

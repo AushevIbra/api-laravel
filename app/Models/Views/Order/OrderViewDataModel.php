@@ -31,6 +31,11 @@ class OrderViewDataModel
     public $letter;
 
     /**
+     * @var string
+     */
+    public $phone;
+
+    /**
      * @var bool
      */
     public $active = false;
@@ -41,5 +46,6 @@ class OrderViewDataModel
         $this->letter = mb_substr($order['name'], 0, 1);
         $this->id     = $order['id'];
         $this->time   = date("H:m", strtotime($order['date_delivery']));
+        $this->phone  = $order['phone'];
     }
 }

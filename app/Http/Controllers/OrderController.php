@@ -44,7 +44,8 @@ class OrderController extends Controller
 
         "name", orders.name,
         "date_delivery", orders.date_delivery,
-        "id", orders.id
+        "id", orders.id,
+        "phone", orders.phone,
 
 )),
 

@@ -125,6 +125,8 @@ class OrderController extends Controller
     public function destroy($id)
     {
         Order::where(Order::ATTR_ID, $id)->delete();
+
+        return "";
     }
 
 }

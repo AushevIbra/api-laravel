@@ -33,17 +33,11 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $query = <<<SQL
-            SUBSTRING(name, 1, 1) as "key",
-            CONCAT("[" , GROUP_CONCAT(JSON_OBJECT('name', name, 'id', id)), "]") as "data"
-SQL;
-
-        $response = DB::table(Food::TABLE_NAME)
-            ->selectRaw($query)
-            ->groupBy("key")
+        $response = Food::distinct('key')
+            ->selectRaw('SUBSTRING(name, 1, 1) as "key"')
             ->get()
-            ->map(function ($client) {
-                return new FoodViewModel($client);
+            ->map(function (Food $food) {
+                return new FoodViewModel($food);
             });
 
         return response()->json(['data' => $response]);
@@ -70,7 +64,7 @@ SQL;
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(FoodRequest $request)
@@ -83,7 +77,7 @@ SQL;
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -96,7 +90,7 @@ SQL;
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -107,8 +101,8 @@ SQL;
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(FoodRequest $request, $id)
@@ -121,7 +115,7 @@ SQL;
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -3,6 +3,7 @@
 namespace App\Models\Views\Order;
 
 
+use App\Models\Order;
 use Carbon\Carbon;
 
 class OrderViewModel
@@ -20,8 +21,7 @@ class OrderViewModel
     public function __construct($data)
     {
         $this->key = (new Carbon($data->key))->isoFormat("dddd, Do MMMM ");
-
-        $orders = json_decode($data->data, true);
+        $orders = Order::whereDate(Order::ATTR_DATE_DELIVERY,date('Y-m-d',  strtotime($data['key'])))->get();
 
         foreach ($orders as $order) {
             $this->data[] = new OrderViewDataModel($order);

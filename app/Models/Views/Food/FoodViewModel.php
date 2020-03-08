@@ -3,6 +3,8 @@
 namespace App\Models\Views\Food;
 
 
+use App\Models\Food;
+
 class FoodViewModel
 {
     /**
@@ -19,7 +21,8 @@ class FoodViewModel
     {
         $this->key = $data->key;
 
-        $foods = json_decode($data->data, true);
+
+        $foods = Food::where(Food::ATTR_NAME, 'LIKE', $this->key . '%')->get();
 
         foreach ($foods as $food) {
             $this->data[] = new FoodViewDataModel($food);

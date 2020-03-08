@@ -35,24 +35,8 @@ class OrderController extends Controller
             $request->get('date_to', date("Y-m-d", strtotime("2040-11-23")))
         ];
 
-        $sql    = <<<SQL
-    DATE_FORMAT(orders.date_delivery, '%d.%m.%Y') as "key",  CONCAT(
-
- '[',
-
-   GROUP_CONCAT(JSON_OBJECT(
-
-        "name", orders.name,
-        "date_delivery", orders.date_delivery,
-        "id", orders.id,
-        "phone", orders.phone
-
-)),
-
-   ']') as "data"
-SQL;
-        $orders = DB::table('orders')
-            ->selectRaw($sql)
+        $orders = Order::distinct(Order::ATTR_DATE_DELIVERY)
+            ->selectRaw("DATE_FORMAT(orders.date_delivery, '%d.%m.%Y') as 'key'")
             ->when($filter, function ($query) use ($filter) {
                 return $query->whereBetween(Order::ATTR_DATE_DELIVERY, $filter);
             })
@@ -60,11 +44,12 @@ SQL;
                 return $query->where(Order::ATTR_NAME, "LIKE", "%" . $request->get('name') . "%")
                     ->orWhere(Order::ATTR_PHONE, "LIKE", "%" . $request->get('name') . "%");
             })
-            ->groupBy(DB::raw("DATE_FORMAT(orders.date_delivery, '%d.%m.%Y')"))
             ->get()
             ->map(function ($order) {
                 return new OrderViewModel($order);
             });
+
+
         return response()->json($orders);
     }
 

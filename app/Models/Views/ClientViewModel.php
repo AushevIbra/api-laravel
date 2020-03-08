@@ -3,6 +3,8 @@
 namespace App\Models\Views;
 
 
+use App\Models\Client;
+
 class ClientViewModel
 {
     /**
@@ -19,7 +21,7 @@ class ClientViewModel
     {
         $this->key = $data->key;
 
-        $clients = json_decode($data->data, true);
+        $clients = Client::where(Client::ATTR_NAME, 'LIKE', $this->key . '%')->get();
 
         foreach ($clients as $client) {
             $this->data[] = new ClientViewDataModel($client);

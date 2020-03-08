@@ -34,18 +34,13 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $query = <<<SQL
-            SUBSTRING(name, 1, 1) as "key",
-            CONCAT("[" , GROUP_CONCAT(JSON_OBJECT('name', name, 'id', id)), "]") as "data"
-SQL;
-
-        $response = DB::table(Client::TABLE_NAME)
-            ->selectRaw($query)
-            ->groupBy("key")
+        $response = Client::distinct('key')
+            ->selectRaw('SUBSTRING(name, 1, 1) as "key"')
             ->get()
-            ->map(function ($client) {
-                return new ClientViewModel($client);
+            ->map(function (Client $food) {
+                return new ClientViewModel($food);
             });
+
 
         return response()->json(['data' => $response]);
 
@@ -78,7 +73,7 @@ SQL;
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(ClientRequest $request)
@@ -91,7 +86,7 @@ SQL;
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -104,7 +99,7 @@ SQL;
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -115,8 +110,8 @@ SQL;
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(ClientRequest $request, $id)
@@ -128,7 +123,7 @@ SQL;
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

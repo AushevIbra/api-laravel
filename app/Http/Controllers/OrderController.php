@@ -124,7 +124,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        Order::firstOrFail((int)$id)->delete();
+        Order::where(Order::ATTR_ID, $id)->delete();
         return true;
     }
 

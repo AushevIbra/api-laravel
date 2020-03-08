@@ -19,10 +19,10 @@ class FoodViewModel
     {
         $this->key = $data->key;
 
-        $clients = json_decode($data->data, true);
+        $foods = json_decode($data->data, true);
 
-        foreach ($clients as $client) {
-            $this->data[] = new FoodViewDataModel($client);
+        foreach ($foods as $food) {
+            $this->data[] = new FoodViewDataModel($food);
         }
 
     }

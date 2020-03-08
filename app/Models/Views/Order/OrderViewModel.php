@@ -19,7 +19,7 @@ class OrderViewModel
 
     public function __construct($data)
     {
-        $this->key = (new Carbon($data->key))->isoFormat("dddd D.M");
+        $this->key = (new Carbon($data->key))->isoFormat("dddd, Do MMMM ");
 
         $orders = json_decode($data->data, true);
 

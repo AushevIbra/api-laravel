@@ -25,4 +25,13 @@ class Food extends Model
         self::ATTR_PRICE,
         self::ATTR_IMG
     ];
+
+    protected $appends = [
+        'image',
+    ];
+
+    public function getImageAttribute()
+    {
+        return $this->attributes['image'] = ($this->img) ? url('storage/' . $this->img) : null;
+    }
 }

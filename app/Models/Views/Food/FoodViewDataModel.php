@@ -30,10 +30,10 @@ class FoodViewDataModel
      */
     public $letter;
 
-    public function __construct($client)
+    public function __construct($food)
     {
-        $this->name   = $client['name'];
-        $this->letter = mb_substr($client['name'], 0, 1);
-        $this->id     = $client['id'];
+        $this->name   = $food['name'];
+        $this->letter = mb_substr($food['name'], 0, 1);
+        $this->id     = $food['id'];
     }
 }

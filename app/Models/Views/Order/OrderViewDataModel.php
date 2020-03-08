@@ -45,7 +45,7 @@ class OrderViewDataModel
         $this->name   = $order['name'];
         $this->letter = mb_substr($order['name'], 0, 1);
         $this->id     = $order['id'];
-        $this->time   = date("H:m", strtotime($order['date_delivery']));
+        $this->time   = date("H:i", strtotime($order['date_delivery']));
         $this->phone  = $order['phone'];
     }
 }

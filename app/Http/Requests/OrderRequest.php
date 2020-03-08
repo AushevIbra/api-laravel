@@ -28,7 +28,7 @@ class OrderRequest extends FormRequest
             Order::ATTR_DATE_DELIVERY => 'required',
             Order::ATTR_CLIENT_ID     => 'required',
             'cart'                    => 'required',
-            'cart.*.count'            => 'required',
+            'cart.*.count'            => ['required', 'min:1'],
             'cart.*.unit'             => 'required',
         ];
     }
@@ -41,6 +41,7 @@ class OrderRequest extends FormRequest
             'cart.required'                                       => 'Выберите блюда',
             'cart.*.count.required'                               => 'Установите везде количество',
             'cart.*.unit.required'                                => 'Установите везде единицу измерения',
+            'cart.*.count.min'                                    => 'Выберите количество больше 0',
         ];
     }
 }

@@ -36,7 +36,7 @@ class OrderController extends Controller
         ];
 
         $sql    = <<<SQL
-    DATE_FORMAT(orders.date_delivery, '%d.%m.%Y') as "key", CONCAT(
+    DATE_FORMAT(orders.date_delivery, '%d.%m.%Y') as "key",  CONCAT(
 
  '[',
 
@@ -45,7 +45,7 @@ class OrderController extends Controller
         "name", orders.name,
         "date_delivery", orders.date_delivery,
         "id", orders.id,
-        "phone", orders.phone,
+        "phone", orders.phone
 
 )),
 
@@ -53,13 +53,14 @@ class OrderController extends Controller
 SQL;
         $orders = DB::table('orders')
             ->selectRaw($sql)
-            ->groupBy(DB::raw("DATE_FORMAT(orders.date_delivery, '%d.%m.%Y')"))
             ->when($filter, function ($query) use ($filter) {
                 return $query->whereBetween(Order::ATTR_DATE_DELIVERY, $filter);
             })
             ->when($request->get('name'), function ($query) use ($request) {
-                return $query->where(Order::ATTR_NAME, "LIKE", "%" . $request->get('name') . "%");
+                return $query->where(Order::ATTR_NAME, "LIKE", "%" . $request->get('name') . "%")
+                    ->orWhere(Order::ATTR_PHONE, "LIKE", "%" . $request->get('name') . "%");
             })
+            ->groupBy(DB::raw("DATE_FORMAT(orders.date_delivery, '%d.%m.%Y')"))
             ->get()
             ->map(function ($order) {
                 return new OrderViewModel($order);
@@ -80,7 +81,7 @@ SQL;
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(OrderRequest $request)
@@ -94,7 +95,7 @@ SQL;
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -107,7 +108,7 @@ SQL;
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -118,8 +119,8 @@ SQL;
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -130,7 +131,7 @@ SQL;
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

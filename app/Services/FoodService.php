@@ -39,7 +39,7 @@ class FoodService
         $model->fill($data);
 
         if ($request->file('img')) {
-            $model->img = url("storage/" . $request->file('img')->store('img', 'public'));
+            $model->img =  $request->file('img')->store('img', 'public');
         }
 
         $model->save();

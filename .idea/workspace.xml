@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b0b4e8e-0dae-4400-947a-2ca947ff3c2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FoodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FoodController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Views/ClientViewModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Views/ClientViewModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Views/Food/FoodViewModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Views/Food/FoodViewModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Views/Order/OrderViewModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Views/Order/OrderViewModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +220,7 @@
       <workItem from="1583469420948" duration="18000" />
       <workItem from="1583470042545" duration="13000" />
       <workItem from="1583651197789" duration="621000" />
-      <workItem from="1583660244337" duration="2769000" />
+      <workItem from="1583660244337" duration="4016000" />
     </task>
     <servers />
   </component>
@@ -269,9 +264,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1583663231579" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1583663180472">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1583665253612">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1583663180472" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1583665253612" />
   </component>
 </project>

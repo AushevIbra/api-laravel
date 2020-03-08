@@ -110,7 +110,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Order::where(Order::ATTR_ID, $id)
+            ->update([
+                Order::ATTR_STATUS => $request->post('status')
+            ]);
     }
 
     /**
@@ -121,7 +124,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Order::findOrFail($id)->delete();
+        return true;
     }
 
 }

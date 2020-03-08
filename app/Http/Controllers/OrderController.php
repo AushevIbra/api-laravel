@@ -124,6 +124,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
+        var_dump(123);die;
         Order::findOrFail($id)->delete();
         return true;
     }

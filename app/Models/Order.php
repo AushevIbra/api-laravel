@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
+    use SoftDeletes;
     const ATTR_ID            = 'id';
     const ATTR_NAME          = 'name';
     const ATTR_ADDRESS       = 'address';

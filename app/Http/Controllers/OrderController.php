@@ -10,7 +10,6 @@ use App\Models\Views\Order\OrderViewModel;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -111,11 +110,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Log::info('data', [$request->all()]);
-//        Order::where(Order::ATTR_ID, $id)
-//            ->update([
-//                Order::ATTR_STATUS => \request('status')
-//            ]);
+        Order::where(Order::ATTR_ID, $id)
+            ->update([
+                Order::ATTR_STATUS => $request->post('status')
+            ]);
     }
 
     /**

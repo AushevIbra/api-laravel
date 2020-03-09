@@ -112,7 +112,7 @@ class OrderController extends Controller
     {
         Order::where(Order::ATTR_ID, $id)
             ->update([
-                Order::ATTR_STATUS => $request->post('status')
+                Order::ATTR_STATUS => \request('status')
             ]);
     }
 

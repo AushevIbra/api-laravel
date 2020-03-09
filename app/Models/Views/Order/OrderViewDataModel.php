@@ -40,6 +40,11 @@ class OrderViewDataModel
      */
     public $active = false;
 
+    /**
+     * @var integer
+     */
+    public $status;
+
     public function __construct($order)
     {
         $this->name   = $order['name'];
@@ -47,5 +52,6 @@ class OrderViewDataModel
         $this->id     = $order['id'];
         $this->time   = date("H:i", strtotime($order['date_delivery']));
         $this->phone  = $order['phone'];
+        $this->status = $order['status'];
     }
 }

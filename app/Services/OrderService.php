@@ -12,7 +12,6 @@ class OrderService
 {
     public function save(OrderRequest $request, Order $order)
     {
-        Log::info("DATA", $request->all());
         $data = $request->all([
             Order::ATTR_NAME,
             Order::ATTR_ADDRESS,

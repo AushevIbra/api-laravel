@@ -130,6 +130,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         Order::where(Order::ATTR_ID, $id)->delete();
+        OrderFoods::where(OrderFoods::ATTR_ORDER_ID, $id)->delete();
 
         return "";
     }

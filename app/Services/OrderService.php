@@ -20,10 +20,11 @@ class OrderService
             Order::ATTR_DATE_DELIVERY,
             Order::ATTR_COMMENT,
             Order::ATTR_CLIENT_ID,
+            Order::ATTR_TOTAL_SUM,
         ]);
 
         $order->fill($data);
-        $order->total_sum = 0;
+//        $order->total_sum = 0;
         $order->save();
 
         foreach ($request->post('cart') as $food) {

@@ -24,3 +24,5 @@ Route::resources([
     'orders'  => 'OrderController',
 ]);
 
+Route::get('/stats', 'OrderController@stats');
+

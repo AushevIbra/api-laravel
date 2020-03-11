@@ -30,10 +30,22 @@ class ClientViewDataModel
      */
     public $letter;
 
+    /**
+     * @var integer
+     */
+    public $count;
+
+    /**
+     * @var integer
+     */
+    public $total;
+
     public function __construct($client)
     {
         $this->name   = $client['name'];
         $this->letter = mb_substr($client['name'], 0, 1);
         $this->id     = $client['id'];
+        $this->count  = isset($client['count']) ? $client['count'] : null;
+        $this->total  = isset($client['total']) ? $client['total'] : null;
     }
 }

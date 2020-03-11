@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
 use App\Models\Client;
+use App\Models\Food;
 use App\Models\Order;
 use App\Http\Resources\Order as OrderResource;
+use App\Models\OrderFoods;
+use App\Models\Views\ClientViewDataModel;
+use App\Models\Views\Food\FoodViewDataModel;
+use App\Models\Views\Food\FoodViewModel;
 use App\Models\Views\Order\OrderViewModel;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
@@ -127,6 +132,42 @@ class OrderController extends Controller
         Order::where(Order::ATTR_ID, $id)->delete();
 
         return "";
+    }
+
+    public function stats(Request $request)
+    {
+        $filter = [
+            $request->get('date_from', date("Y-m-d", strtotime('1970-01-01'))),
+            $request->get('date_to', date("Y-m-d", strtotime("2040-11-23")))
+        ];
+
+        if ($request->get('type') === 'foods') {
+            $data = OrderFoods::selectRaw('foods.*, sum(count) as count')
+                ->leftJoin('orders', 'orders.id', '=', 'order_foods.order_id')
+                ->leftJoin('foods', 'foods.id', '=', 'order_foods.food_id')
+                ->when($filter, function ($query) use ($filter) {
+                    return $query->whereBetween(Order::ATTR_DATE_DELIVERY, $filter);
+                })
+                ->groupBy('order_foods.food_id')
+                ->get()
+                ->map(function ($item) {
+                    return new FoodViewDataModel($item);
+                });
+        } elseif ($request->get('type') === 'clients') {
+            $data = Order::selectRaw('clients.*, sum(total_sum) as total, COUNT(orders.id) as count')
+                ->leftJoin('clients', 'clients.id', '=', 'orders.client_id')
+                ->when($filter, function ($query) use ($filter) {
+                    return $query->whereBetween(Order::ATTR_DATE_DELIVERY, $filter);
+                })
+                ->groupBy('orders.client_id')
+                ->orderByDesc($request->get('order') ?? 'count')
+                ->get()
+                ->map(function ($item) {
+                    return new ClientViewDataModel($item);
+                });
+        }
+
+        return response()->json($data);
     }
 
 }

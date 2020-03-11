@@ -149,6 +149,7 @@ class OrderController extends Controller
                     return $query->whereBetween(Order::ATTR_DATE_DELIVERY, $filter);
                 })
                 ->groupBy('order_foods.food_id')
+                ->orderByDesc($request->get('order') ?? 'count')
                 ->get()
                 ->map(function ($item) {
                     return new FoodViewDataModel($item);
